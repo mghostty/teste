@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@import "tailwindcss" theme(static);
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Inter' !important, sans-serif;
+
+  --color-green-50: oklch(90.98% 0.04338 166.72);
+  --color-green-100: oklch(88.46% 0.05417 166.29);
+  --color-green-200: oklch(83.957% 0.07763 165.13);
+  --color-green-300: oklch(79.343% 0.09927 163.52);
+  --color-green-400: oklch(74.927% 0.11835 162.26);
+  --color-green-500: oklch(70.253% 0.13197 160.37);
+  --color-green-600: oklch(58.426% 0.10793 160.73);
+  --color-green-700: oklch(45.657% 0.08188 161.06);
+  --color-green-800: oklch(32.298% 0.05338 161.83);
+  --color-green-900: oklch(17.276% 0.02184 161.78);
+
+  /* ash */
+  --color-ash-50: oklch(96% 0.002 270);
+  --color-ash-100: oklch(93% 0.004 270);
+  --color-ash-200: oklch(87% 0.006 270);
+  --color-ash-300: oklch(80% 0.008 270);
+  --color-ash-400: oklch(70% 0.010 270);
+  --color-ash-500: oklch(60% 0.012 270);
+  --color-ash-600: oklch(48% 0.012 270);
+  --color-ash-700: oklch(36% 0.010 270);
+  --color-ash-800: oklch(25% 0.008 270);
+  --color-ash-900: oklch(15% 0.006 270);
+
+  /* sand */
+  --color-sand-50: oklch(97% 0.010 95);
+  --color-sand-100: oklch(94% 0.012 95);
+  --color-sand-200: oklch(88% 0.014 95);
+  --color-sand-300: oklch(80% 0.016 95);
+  --color-sand-400: oklch(70% 0.018 95);
+  --color-sand-500: oklch(60% 0.018 95);
+  --color-sand-600: oklch(50% 0.016 95);
+  --color-sand-700: oklch(38% 0.014 95);
+  --color-sand-800: oklch(27% 0.012 95);
+  --color-sand-900: oklch(18% 0.010 95);
+
+  /* mist (neutro claro, útil em modo dark para contrastes) */
+  --color-mist-50: oklch(98% 0.002 250);
+  --color-mist-100: oklch(95% 0.003 250);
+  --color-mist-200: oklch(90% 0.004 250);
+  --color-mist-300: oklch(82% 0.005 250);
+  --color-mist-400: oklch(70% 0.006 250);
+  --color-mist-500: oklch(60% 0.007 250);
+  --color-mist-600: oklch(48% 0.007 250);
+  --color-mist-700: oklch(37% 0.006 250);
+  --color-mist-800: oklch(27% 0.005 250);
+  --color-mist-900: oklch(17% 0.004 250);
+
+  /* lavender (um pouco mais claro e azulado, para contraste) */
+  --color-lavender-50:  oklch(96% 0.012 300);
+  --color-lavender-100: oklch(90% 0.016 300);
+  --color-lavender-200: oklch(82% 0.020 300);
+  --color-lavender-300: oklch(72% 0.024 300);
+  --color-lavender-400: oklch(61% 0.028 300);
+  --color-lavender-500: oklch(51% 0.032 300);
+  --color-lavender-600: oklch(40% 0.028 300);
+  --color-lavender-700: oklch(30% 0.024 300);
+  --color-lavender-800: oklch(22% 0.020 300);
+  --color-lavender-900: oklch(15% 0.016 300);
+
+  --color-sepia-50:  oklch(97% 0.013 80);
+  --color-sepia-100: oklch(94% 0.020 80);
+  --color-sepia-200: oklch(88% 0.030 80);
+  --color-sepia-300: oklch(82% 0.040 80);
+  --color-sepia-400: oklch(74% 0.045 80);
+  --color-sepia-500: oklch(66% 0.045 80);
+  --color-sepia-600: oklch(55% 0.038 80);
+  --color-sepia-700: oklch(44% 0.030 80);
+  --color-sepia-800: oklch(34% 0.025 80);
+  --color-sepia-900: oklch(24% 0.018 80);
+  --color-sepia-950: oklch(16% 0.012 80);
+
+  --color-sepia-brown:   oklch(45% 0.06 65);   /* marrom médio */
+  --color-sepia-amber:   oklch(80% 0.10 80);   /* dourado suave */
+  --color-sepia-cream:   oklch(94% 0.04 85);   /* creme claro */
+  --color-sepia-coffee:  oklch(32% 0.05 60);   /* café escuro */
+}
+
+body {
+  overflow-x: hidden !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.708 0 0 / 0.3);
+  border-radius: 100px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.708 0 0 / 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: oklch(0.439 0 0 / 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.439 0 0 / 0.6);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.708 0 0 / 0.3) transparent;
+}
+
+.dark * {
+  scrollbar-color: oklch(0.439 0 0 / 0.4) transparent;
+}
+
+.dark {
+  --ui-primary: var(--ui-color-primary-500);
+}
+
+.fade-left-enter-active,
+.fade-left-leave-active {
+  transition: opacity .5s ease-in-out, transform .5s ease;
+}
+
+.fade-left-enter-from,
+.fade-left-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.fade-left-enter-to,
+.fade-left-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
