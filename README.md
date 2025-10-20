@@ -1,58 +1,88 @@
-# Vue Dashboard Template
+# ⚙️ SCPL - Módulo Engenharia
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Esse repositório contém o projeto Front-End do Módulo de Engenharia do Sistema SCPL, construído em VueJS 3 e Nuxt UI (w/ Vite e Typescript).
 
-Get started with the Vite + Vue dashboard template with multiple pages, collapsible sidebar, keyboard shortcuts, light & dark more, command palette and more, powered by [Nuxt UI](https://ui.nuxt.com).
+## TODO
 
-- [Live Demo](https://dashboard-vue-template.nuxt.dev)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/vue)
+Total de 23 páginas + 1 permissões
 
-<a href="https://dashboard-vue-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/vue/dashboard-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/vue/dashboard-light.png">
-    <img alt="Nuxt Dashboard Template" src="https://ui.nuxt.com/assets/templates/vue/dashboard-light.png">
-  </picture>
-</a>
-
-> The dashboard template for Nuxt is on https://github.com/nuxt-ui-templates/dashboard.
-
-## Quick Start
-
-```bash [Terminal]
-npm create nuxt@latest -- --no-modules -t github:nuxt-ui-templates/dashboard-vue
+```
+Home
+Solicitação
+  Solicitação de Etiquetas/Ícones
+  Solicitação de Material
+Defeito de Fabricação
+Estruturas
+Firmwares
+IO's
+Insumos / Produtos
+Jigas
+  Controle de Produto
+  Lista de Erros
+  Lista de Jigas
+  Verificações de Jiga
+Licenças
+  QT
+Pedidos
+Projetos
+Sendero
+  Controle de Chassis
+  Curva Volumétrica
+  Curva de Saída
+  Ordens de Venda
+  Produto Jiga
+Solda SMD
+  Relatório
+  Valores
+Utilitários
+  Drive
 ```
 
-## Deploy your own
+## Variáveis de Ambiente
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=dashboard-vue&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fdashboard-vue&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fvue%2Fdashboard-dark.png&demo-url=https%3A%2F%2Fdashboard-vue-template.nuxt.dev%2F&demo-title=Vue%20Dashboard%20Template&demo-description=A%20dashboard%20template%20with%20multi-column%20layout%20for%20building%20sophisticated%20admin%20interfaces.)
+```yaml
+# Application settings
+VITE_APP_NAME="ms_front_eng"
+VITE_APP_AUTHSECRET = ""
+VITE_NODE_ENV= "development"
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-pnpm install
+# Application services
+VITE_APP_MS_AT = "http://localhost:3002"
+VITE_APP_MS_CMP="http://localhost:3004"
+VITE_APP_MS_ENG = "http://localhost:3005"
+VITE_APP_MS_VND = "http://localhost:3006"
+VITE_APP_MS_DRIVE="http://localhost:3011"
+VITE_APP_MS_INS="http://localhost:3202"
+VITE_APP_MS_AUTH = "http://localhost:3200"
+VITE_APP_MS_FORN="http://localhost:3209"
+VITE_APP_MS_UPL = "http://localhost:3211"
+VITE_APP_MS_EST="http://localhost:3214"
+VITE_APP_MS_EST="https://apimsdev.lohr.com.br"
+VITE_APP_MS_DOCS="http://localhost:3218"
 ```
 
-## Development Server
+## Links Úteis
+-  [VueJS](https://vuejs.org/)
+- [Nuxt UI](https://ui.nuxt.com/docs/components)
+-  [Axios](https://axios-http.com/ptbr/docs/intro)
+-  [NodeJs](https://nodejs.org/en/)
+-  [Plugin Vue.js DevTools para Google Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
-Start the development server on `http://localhost:5173`:
+## Comandos úteis
 
-```bash
-pnpm dev
+```yaml
+# Instalação de dependências do projeto
+npm install
+
+# Roda um servidor local de testes com hot-reload
+npm run serve
+
+# Compila e minifica o projeto para produção
+npm run build
 ```
 
-## Production
-
-Build the application for production:
-
-```bash
-pnpm build
-```
-
-Locally preview production build:
-
-```bash
-pnpm preview
-```
+## Versão
+- A versão é alterada a cada novo deploy, alteramos a versão dentro da pasta package.json X.Y.Z
+- Alteramos o número da versão X quando é feita uma alteração bem considerável em todo o sistema.
+- Alteramos o número da versão Y quando é feita uma nova implementação, uma nova funcionalidade, uma nova feature.
+- Alteramos o número da versão Z a qualquer tipo de alteração simples.
