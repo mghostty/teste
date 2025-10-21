@@ -8,6 +8,7 @@ import dashboardSidebar from './src/utils/styles/dashboard-sidebar'
 import modal from './src/utils/styles/modal'
 import container from './src/utils/styles/container'
 import tabs from './src/utils/styles/tabs'
+import colors from './src/utils/styles/colors'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,10 +16,7 @@ plugins: [
     vue(),
     ui({
       ui: {
-        colors: {
-          primary: 'slate',
-          neutral: 'neutral'
-        },
+        colors,
         navigationMenu,
         pageHeader,
         dashboardPanel,

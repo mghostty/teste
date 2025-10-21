@@ -38,12 +38,21 @@ Utilitários
   Drive
 ```
 
+Novos:
+
+```
+Solicitação de Ensaio
+Homologações
+Histórico de Patrimônio
+Família de Insumos
+Panacim
+```
+
 ## Variáveis de Ambiente
 
 ```yaml
 # Application settings
 VITE_APP_NAME="ms_front_eng"
-VITE_APP_AUTHSECRET = ""
 VITE_NODE_ENV= "development"
 
 # Application services

@@ -9,7 +9,6 @@ const UAvatar = resolveComponent('UAvatar')
 const UButton = resolveComponent('UButton')
 const UBadge = resolveComponent('UBadge')
 const UDropdownMenu = resolveComponent('UDropdownMenu')
-const UCheckbox = resolveComponent('UCheckbox')
 
 const toast = useToast()
 const table = useTemplateRef('table')
@@ -20,7 +19,6 @@ const columnFilters = ref([{
 }])
 const columnVisibility = ref()
 const rowSelection = ref({ 1: true })
-
 const { data, isFetching } = useFetch('https://dashboard-template.nuxt.dev/api/customers', { initialData: [] }).json<User[]>()
 
 function getRowItems(row: Row<User>) {
@@ -175,15 +173,6 @@ const pagination = ref({
   pageIndex: 0,
   pageSize: 10
 })
-
-const links = ref([
-  {
-    label: 'GitHub',
-    icon: 'i-simple-icons-github',
-    to: 'https://github.com/nuxt/ui/tree/v4/src/runtime/components/PageHeader.vue',
-    target: '_blank'
-  }
-])
 
 const showContent = ref(false)
 
