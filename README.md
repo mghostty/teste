@@ -71,11 +71,12 @@ VITE_APP_MS_DOCS="http://localhost:3218"
 ```
 
 ## Links Úteis
--  [VueJS](https://vuejs.org/)
+
+- [VueJS](https://vuejs.org/)
 - [Nuxt UI](https://ui.nuxt.com/docs/components)
--  [Axios](https://axios-http.com/ptbr/docs/intro)
--  [NodeJs](https://nodejs.org/en/)
--  [Plugin Vue.js DevTools para Google Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
+- [NodeJs](https://nodejs.org/en/)
+- [Plugin Vue.js DevTools para Google Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 
 ## Comandos úteis
 
@@ -91,6 +92,7 @@ npm run build
 ```
 
 ## Versão
+
 - A versão é alterada a cada novo deploy, alteramos a versão dentro da pasta package.json X.Y.Z
 - Alteramos o número da versão X quando é feita uma alteração bem considerável em todo o sistema.
 - Alteramos o número da versão Y quando é feita uma nova implementação, uma nova funcionalidade, uma nova feature.

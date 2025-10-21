@@ -7,8 +7,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-18',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.17',
@@ -18,8 +18,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-17',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.16',
@@ -29,8 +29,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-16',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.15',
@@ -40,8 +40,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-15',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.14',
@@ -51,8 +51,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-14',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.13',
@@ -62,8 +62,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-13',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.12',
@@ -73,8 +73,8 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-12',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
+      container: 'max-w-3xl',
+    },
   },
   {
     title: 'Nuxt 3.11',
@@ -84,7 +84,7 @@ export const versions = [
     to: 'https://nuxt.com/blog/v3-11',
     target: '_blank',
     ui: {
-      container: 'max-w-3xl'
-    }
-  }
-]
+      container: 'max-w-3xl',
+    },
+  },
+];

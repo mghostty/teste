@@ -1,4 +1,4 @@
 export default {
   primary: 'slate',
-  neutral: 'neutral'
-}
+  neutral: 'neutral',
+};

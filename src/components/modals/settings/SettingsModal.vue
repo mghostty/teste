@@ -21,7 +21,7 @@
                 'w-full flex items-center gap-3 px-3 py-2 text-sm rounded-lg transition-colors',
                 activeTab === item.slot
                   ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
-                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800',
               ]"
             >
               <UIcon :name="item.icon" class="w-4 h-4" />
@@ -64,7 +64,7 @@
             <USeparator
               class="mt-6"
               :avatar="{
-                src: 'https://github.com/nuxt.png'
+                src: 'https://github.com/nuxt.png',
               }"
             />
 
@@ -108,7 +108,9 @@
 
           <!-- Notificações -->
           <div v-if="activeTab === 'notifications'" class="max-w-2xl">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+            <h2
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-1"
+            >
               Notificações
             </h2>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
@@ -144,7 +146,9 @@
 
           <!-- Segurança -->
           <div v-if="activeTab === 'security'" class="max-w-2xl">
-            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+            <h2
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-1"
+            >
               Segurança
             </h2>
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
@@ -152,32 +156,56 @@
             </p>
 
             <div class="space-y-4">
-              <div class="border border-gray-200 dark:border-gray-800 rounded-lg p-4">
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg p-4"
+              >
                 <div class="flex items-start gap-3">
-                  <UIcon name="i-lucide-smartphone" class="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5" />
+                  <UIcon
+                    name="i-lucide-smartphone"
+                    class="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5"
+                  />
                   <div class="flex-1">
-                    <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
                       Autenticação de dois fatores
                     </p>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Adicione uma camada extra de segurança à sua conta
                     </p>
-                    <UButton label="Configurar" variant="soft" size="xs" class="mt-3" />
+                    <UButton
+                      label="Configurar"
+                      variant="soft"
+                      size="xs"
+                      class="mt-3"
+                    />
                   </div>
                 </div>
               </div>
 
-              <div class="border border-gray-200 dark:border-gray-800 rounded-lg p-4">
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg p-4"
+              >
                 <div class="flex items-start gap-3">
-                  <UIcon name="i-lucide-monitor" class="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5" />
+                  <UIcon
+                    name="i-lucide-monitor"
+                    class="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5"
+                  />
                   <div class="flex-1">
-                    <p class="text-sm font-medium text-gray-900 dark:text-white">
+                    <p
+                      class="text-sm font-medium text-gray-900 dark:text-white"
+                    >
                       Sessões ativas
                     </p>
                     <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
                       Gerencie os dispositivos conectados à sua conta
                     </p>
-                    <UButton label="Ver sessões" variant="soft" size="xs" class="mt-3" />
+                    <UButton
+                      label="Ver sessões"
+                      variant="soft"
+                      size="xs"
+                      class="mt-3"
+                    />
                   </div>
                 </div>
               </div>
@@ -193,9 +221,9 @@
 import { reactive, ref } from 'vue';
 import { useModalStore } from '../../../composables/useModalStore';
 
-const { modals } = useModalStore()
+const { modals } = useModalStore();
 
-const activeTab = ref('account')
+const activeTab = ref('account');
 
 const state = reactive({
   name: 'Thiago Ferreira',
@@ -203,29 +231,29 @@ const state = reactive({
   currentPassword: '',
   newPassword: '',
   confirmPassword: '',
-  avatar: 'https://rocketchat.lohr.com.br/avatar/thiago.f'
-})
+  avatar: 'https://rocketchat.lohr.com.br/avatar/thiago.f',
+});
 
 const notifications = reactive({
   marketing: false,
-  security: true
-})
+  security: true,
+});
 
 const items = [
   {
     label: 'Meu Perfil',
     icon: 'i-lucide-user',
-    slot: 'account' as const
+    slot: 'account' as const,
   },
   {
     label: 'Notificações',
     icon: 'i-lucide-bell',
-    slot: 'notifications' as const
+    slot: 'notifications' as const,
   },
   {
     label: 'Membros',
     icon: 'i-lucide-users',
-    slot: 'security' as const
-  }
-]
+    slot: 'security' as const,
+  },
+];
 </script>

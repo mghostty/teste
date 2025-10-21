@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { onMounted, ref, shallowRef } from 'vue'
-import { sub } from 'date-fns'
-import type { Period, Range } from '../types'
+import { onMounted, ref, shallowRef } from 'vue';
+import { sub } from 'date-fns';
+import type { Period, Range } from '../types';
 
 const range = shallowRef<Range>({
   start: sub(new Date(), { days: 14 }),
-  end: new Date()
-})
-const period = ref<Period>('daily')
+  end: new Date(),
+});
+const period = ref<Period>('daily');
 
-const showContent = ref(false)
+const showContent = ref(false);
 
 onMounted(() => {
-  showContent.value = true
-})
+  showContent.value = true;
+});
 </script>
 
 <template>

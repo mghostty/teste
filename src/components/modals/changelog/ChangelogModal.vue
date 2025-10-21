@@ -15,6 +15,6 @@
 
 <script setup lang="ts">
 import { useModalStore } from '../../../composables/useModalStore';
-const { modals } = useModalStore()
-import { versions } from '../../../utils/docs/changelog-versions'
+const { modals } = useModalStore();
+import { versions } from '../../../utils/docs/changelog-versions';
 </script>

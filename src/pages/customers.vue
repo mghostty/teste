@@ -1,56 +1,68 @@
 <script setup lang="ts">
-import { useTemplateRef, h, ref, watch, resolveComponent, onMounted } from 'vue'
-import type { TableColumn } from '@nuxt/ui'
-import { useFetch } from '@vueuse/core'
-import { getPaginationRowModel, type Row } from '@tanstack/table-core'
-import type { User } from '../types'
+import {
+  useTemplateRef,
+  h,
+  ref,
+  watch,
+  resolveComponent,
+  onMounted,
+} from 'vue';
+import type { TableColumn } from '@nuxt/ui';
+import { useFetch } from '@vueuse/core';
+import { getPaginationRowModel, type Row } from '@tanstack/table-core';
+import type { User } from '../types';
 
-const UAvatar = resolveComponent('UAvatar')
-const UButton = resolveComponent('UButton')
-const UBadge = resolveComponent('UBadge')
-const UDropdownMenu = resolveComponent('UDropdownMenu')
+const UAvatar = resolveComponent('UAvatar');
+const UButton = resolveComponent('UButton');
+const UBadge = resolveComponent('UBadge');
+const UDropdownMenu = resolveComponent('UDropdownMenu');
 
-const toast = useToast()
-const table = useTemplateRef('table')
+const toast = useToast();
+const table = useTemplateRef('table');
 
-const columnFilters = ref([{
-  id: 'email',
-  value: ''
-}])
-const columnVisibility = ref()
-const rowSelection = ref({ 1: true })
-const { data, isFetching } = useFetch('https://dashboard-template.nuxt.dev/api/customers', { initialData: [] }).json<User[]>()
+const columnFilters = ref([
+  {
+    id: 'email',
+    value: '',
+  },
+]);
+const columnVisibility = ref();
+const rowSelection = ref({ 1: true });
+const { data, isFetching } = useFetch(
+  'https://dashboard-template.nuxt.dev/api/customers',
+  { initialData: [] }
+).json<User[]>();
 
 function getRowItems(row: Row<User>) {
   return [
     {
       type: 'label',
-      label: 'Actions'
+      label: 'Actions',
     },
     {
       label: 'Copy customer ID',
       icon: 'i-lucide-copy',
       onSelect() {
-        navigator.clipboard.writeText(row.original.id.toString())
+        navigator.clipboard.writeText(row.original.id.toString());
         toast.add({
           title: 'Copied to clipboard',
-          description: 'Customer ID copied to clipboard'
-        })
-      }
+          description: 'Customer ID copied to clipboard',
+        });
+      },
     },
     {
-      type: 'separator'
+      type: 'separator',
     },
     {
       label: 'View customer details',
-      icon: 'i-lucide-list'
+      icon: 'i-lucide-list',
     },
     {
       label: 'View customer payments',
-      icon: 'i-lucide-wallet'
+      icon: 'i-lucide-wallet',
     },
     {
-      type: 'separator'
+      type: 'separator',
     },
     {
       label: 'Delete customer',
@@ -59,17 +71,17 @@ function getRowItems(row: Row<User>) {
       onSelect() {
         toast.add({
           title: 'Customer deleted',
-          description: 'The customer has been deleted.'
-        })
-      }
-    }
-  ]
+          description: 'The customer has been deleted.',
+        });
+      },
+    },
+  ];
 }
 
 const columns: TableColumn<User>[] = [
   {
     accessorKey: 'id',
-    header: 'ID'
+    header: 'ID',
   },
   {
     accessorKey: 'name',
@@ -78,19 +90,19 @@ const columns: TableColumn<User>[] = [
       return h('div', { class: 'flex items-center gap-3' }, [
         h(UAvatar, {
           ...row.original.avatar,
-          size: 'lg'
+          size: 'lg',
         }),
         h('div', undefined, [
           h('p', { class: 'font-medium text-highlighted' }, row.original.name),
-          h('p', { class: '' }, `@${row.original.name}`)
-        ])
-      ])
-    }
+          h('p', { class: '' }, `@${row.original.name}`),
+        ]),
+      ]);
+    },
   },
   {
     accessorKey: 'email',
     header: ({ column }) => {
-      const isSorted = column.getIsSorted()
+      const isSorted = column.getIsSorted();
 
       return h(UButton, {
         color: 'neutral',
@@ -102,14 +114,14 @@ const columns: TableColumn<User>[] = [
             : 'i-lucide-arrow-down-wide-narrow'
           : 'i-lucide-arrow-up-down',
         class: '-mx-2.5',
-        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc')
-      })
-    }
+        onClick: () => column.toggleSorting(column.getIsSorted() === 'asc'),
+      });
+    },
   },
   {
     accessorKey: 'location',
     header: 'Location',
-    cell: ({ row }) => row.original.location
+    cell: ({ row }) => row.original.location,
   },
   {
     accessorKey: 'status',
@@ -119,13 +131,15 @@ const columns: TableColumn<User>[] = [
       const color = {
         subscribed: 'success' as const,
         unsubscribed: 'error' as const,
-        bounced: 'warning' as const
-      }[row.original.status]
+        bounced: 'warning' as const,
+      }[row.original.status];
 
-      return h(UBadge, { class: 'capitalize', variant: 'subtle', color }, () =>
-        row.original.status
-      )
-    }
+      return h(
+        UBadge,
+        { class: 'capitalize', variant: 'subtle', color },
+        () => row.original.status
+      );
+    },
   },
   {
     id: 'actions',
@@ -137,55 +151,56 @@ const columns: TableColumn<User>[] = [
           UDropdownMenu,
           {
             content: {
-              align: 'end'
+              align: 'end',
             },
-            items: getRowItems(row)
+            items: getRowItems(row),
           },
           () =>
             h(UButton, {
               icon: 'i-lucide-ellipsis-vertical',
               color: 'neutral',
               variant: 'ghost',
-              class: 'ml-auto'
+              class: 'ml-auto',
             })
         )
-      )
+      );
+    },
+  },
+];
+
+const statusFilter = ref('all');
+
+watch(
+  () => statusFilter.value,
+  (newVal) => {
+    if (!table?.value?.tableApi) return;
+
+    const statusColumn = table.value.tableApi.getColumn('status');
+    if (!statusColumn) return;
+
+    if (newVal === 'all') {
+      statusColumn.setFilterValue(undefined);
+    } else {
+      statusColumn.setFilterValue(newVal);
     }
   }
-]
-
-const statusFilter = ref('all')
-
-watch(() => statusFilter.value, (newVal) => {
-  if (!table?.value?.tableApi) return
-
-  const statusColumn = table.value.tableApi.getColumn('status')
-  if (!statusColumn) return
-
-  if (newVal === 'all') {
-    statusColumn.setFilterValue(undefined)
-  } else {
-    statusColumn.setFilterValue(newVal)
-  }
-})
+);
 
 const pagination = ref({
   pageIndex: 0,
-  pageSize: 10
-})
+  pageSize: 10,
+});
 
-const showContent = ref(false)
+const showContent = ref(false);
 
 onMounted(() => {
-  showContent.value = true
-})
-
+  showContent.value = true;
+});
 </script>
 
 <template>
   <UDashboardPanel id="customers">
-    <template #header>
-    </template>
+    <template #header> </template>
 
     <template #body>
       <Transition name="fade-left">
@@ -197,7 +212,7 @@ onMounted(() => {
             v-model:row-selection="rowSelection"
             v-model:pagination="pagination"
             :pagination-options="{
-              getPaginationRowModel: getPaginationRowModel()
+              getPaginationRowModel: getPaginationRowModel(),
             }"
             class="shrink-0"
             :data="data ?? []"
@@ -208,22 +223,36 @@ onMounted(() => {
               thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
               tbody: '[&>tr]:last:[&>td]:border-b-0',
               th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
-              td: 'border-b border-default'
+              td: 'border-b border-default',
             }"
           />
 
-          <div class="flex items-center justify-between gap-3 border-t border-default pt-4 mt-auto">
+          <div
+            class="flex items-center justify-between gap-3 border-t border-default pt-4 mt-auto"
+          >
             <div class="text-sm text-muted">
-              {{ table?.tableApi?.getFilteredSelectedRowModel().rows.length || 0 }} of
-              {{ table?.tableApi?.getFilteredRowModel().rows.length || 0 }} row(s) selected.
+              {{
+                table?.tableApi?.getFilteredSelectedRowModel().rows.length || 0
+              }}
+              of
+              {{
+                table?.tableApi?.getFilteredRowModel().rows.length || 0
+              }}
+              row(s) selected.
             </div>
 
             <div class="flex items-center gap-1.5">
               <UPagination
-                :default-page="(table?.tableApi?.getState().pagination.pageIndex || 0) + 1"
-                :items-per-page="table?.tableApi?.getState().pagination.pageSize"
+                :default-page="
+                  (table?.tableApi?.getState().pagination.pageIndex || 0) + 1
+                "
+                :items-per-page="
+                  table?.tableApi?.getState().pagination.pageSize
+                "
                 :total="table?.tableApi?.getFilteredRowModel().rows.length"
-                @update:page="(p: number) => table?.tableApi?.setPageIndex(p - 1)"
+                @update:page="
+                  (p: number) => table?.tableApi?.setPageIndex(p - 1)
+                "
               />
             </div>
           </div>
