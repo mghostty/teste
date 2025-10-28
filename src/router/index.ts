@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import getPageTitle from '../utils/page-title';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 const router = createRouter({
   routes: [
@@ -32,7 +34,12 @@ const router = createRouter({
 
 router.beforeEach((_to: any, _from, next) => {
   document.title = getPageTitle(_to.meta.title);
+  NProgress.start()
   next();
 });
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 export default router;

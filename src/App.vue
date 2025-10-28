@@ -184,6 +184,7 @@ const groups = computed(() => [
           toggle-side="right"
           :default-size="17"
           class="bg-[#18181B] transition-all duration-500 ease-in-out"
+          style="zoom: .95"
           :ui="{
             footer: 'lg:border-t border-neutral-700 dark:border-default',
             header: 'mt-9 mb-3',

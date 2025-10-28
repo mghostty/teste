@@ -110,7 +110,6 @@ const startViewTransition = (event: MouseEvent, newTheme: 'light' | 'dark') => {
   });
 };
 
-// 🧩 Itens do dropdown
 const items = computed<DropdownMenuItem[][]>(() => [
   [
     {
@@ -225,6 +224,7 @@ const items = computed<DropdownMenuItem[][]>(() => [
     :content="{ align: 'end' }"
     :ui="{
       content: collapsed ? 'w-48' : 'w-(--reka-dropdown-menu-trigger-width)',
+      item: 'flex items-center'
     }"
     :itemLabel="'text-base'"
   >

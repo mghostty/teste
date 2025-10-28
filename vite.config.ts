@@ -9,6 +9,7 @@ import modal from './src/utils/styles/modal';
 import container from './src/utils/styles/container';
 import tabs from './src/utils/styles/tabs';
 import colors from './src/utils/styles/colors';
+import main from './src/utils/styles/main';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
         modal,
         container,
         tabs,
+        main
       },
     }),
   ],

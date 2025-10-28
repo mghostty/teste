@@ -1,45 +1,127 @@
 <template>
-  <UMain>
-    <UDashboardPanel id="pedidos" class="flex flex-col">
-      <template #body>
-        <Transition name="fade-left">
-          <div v-if="showContent" class="flex flex-col">
-            <UPageHeader
-              title="Pedidos"
-              description="Gerencie e acompanhe os pedidos LOHR"
-              class="mb-1"
-            />
-
-            <div class="flex-1 overflow-auto">
-              <UTable
-                ref="table"
-                v-model:column-filters="columnFilters"
-                v-model:column-visibility="columnVisibility"
-                v-model:pagination="pagination"
-                :pagination-options="{
-                  getPaginationRowModel: getPaginationRowModel(),
-                }"
-                class="shrink-0"
-                :data="data ?? []"
-                :columns="columns"
+  <UDashboardPanel class="flex flex-col max-w-8xl">
+    <template #body>
+      <Transition name="fade-left">
+        <div v-if="showContent" class="flex flex-col">
+          <UPageHeader
+            title="Pedidos"
+            description="Gerencie e acompanhe os pedidos LOHR"
+            class="mb-1"
+            :ui="{
+              links: 'flex gap-3 relative top-4 overflow-visible'
+            }"
+          >
+            <template #links>
+              <USelect
+                size="lg"
+                :items="[
+                  { value: null, label: 'Todos os Pendentes' },
+                  { type: 'separator' },
+                  { value: 'Af', label: 'Antecipado' },
+                  { value: 'Ag', label: 'Não Antecipado' },
+                  { type: 'separator' },
+                  { value: '105', label: 'Aguardando Análise de Ficha' },
+                  { value: '119', label: 'Aguardando Coleta' },
+                  { value: '107', label: 'Aguardando Conferência Trade' },
+                  { value: '104', label: 'Aguardando Expedição' },
+                  { value: '103', label: 'Aguardando Faturamento' },
+                  { value: '108', label: 'Aguardando Finalização Trade' },
+                  { value: '120', label: 'Aguardando Programação (SCML)' },
+                  { value: '111', label: 'Aguardando Separação' },
+                  { value: '121', label: 'Aguardando Separação/Programação (Sendero)' },
+                  { value: '110', label: 'Aguardando Vendas' },
+                  { value: '101', label: 'Aguardando Visto Produção' },
+                  { value: '557', label: 'Aguardando Visto Técnico' },
+                  { value: '100', label: 'Aguardando Visto Vendas' },
+                  { value: 'Antecipado', label: 'Antecipado para data atual' },
+                  { value: '3', label: 'Cancelado' },
+                  { value: '11', label: 'Cotação' },
+                  { value: '102', label: 'Em produção' },
+                  { value: '106', label: 'Em produção multiplex' },
+                  { value: '2', label: 'Finalizado' },
+                  { value: '112', label: 'Kanban Pendente' },
+                  { value: '109', label: 'Orçamento' },
+                  { value: '10', label: 'Rascunho/Pendente' },
+                  { value: '560', label: 'Sendero - Pendência Interna' },
+                  { value: '559', label: 'Sendero - Pendência Externa' },
+                  { value: '7', label: 'Verificando/Conferindo' },
+                ]"
+                :icon="'i-lucide-filter'"
+                class="w-36"
+                multiple
                 :ui="{
-                  base: 'table-fixed border-separate border-spacing-0',
-                  thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
-                  tbody: '[&>tr]:last:[&>td]:border-b-0',
-                  th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
-                  td: 'border-b border-default',
+                  trailingIcon: 'group-data-[state=open]:rotate-180 transition-transform duration-200',
+                  content: 'min-w-fit'
                 }"
-              >
-              </UTable>
+                placeholder="Status"
+              />
+
+              <UInput
+                size="lg"
+                icon="i-lucide-search"
+                type="search"
+                placeholder="Pesquisar por Código LOHR ou Pedido..."
+                class="w-80"
+              />
+            </template>
+          </UPageHeader>
+
+          <div class="flex-1 overflow-auto">
+            <UTable
+              ref="table"
+              v-model:column-filters="columnFilters"
+              v-model:column-visibility="columnVisibility"
+              v-model:pagination="pagination"
+              :pagination-options="{
+                getPaginationRowModel: getPaginationRowModel(),
+              }"
+              class="shrink-0"
+              :data="data ?? []"
+              :columns="columns"
+              :ui="{
+                base: 'table-fixed border-separate border-spacing-0',
+                thead: '[&>tr]:bg-elevated/50 [&>tr]:after:content-none',
+                tbody: '[&>tr]:last:[&>td]:border-b-0',
+                th: 'py-2 first:rounded-l-lg last:rounded-r-lg border-y border-default first:border-l last:border-r',
+                td: 'border-b border-default',
+              }"
+            >
+            </UTable>
+          </div>
+        </div>
+      </Transition>
+    </template>
+    <template #footer>
+      <Transition name="fade-left">
+        <div
+          class="flex items-center justify-between gap-3 border-t border-default p-5 px-2 mx-5"
+        >
+          <div class="flex gap-3">
+            <div class="flex flex-wrap items-center gap-4 text-sm text-muted">
+              <div class="flex items-center gap-1">
+                <UBadge color="success" variant="subtle" class="w-3 h-3 p-0 rounded-full" />
+                <span>Pago</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <UBadge color="error" variant="subtle" class="w-3 h-3 p-0 rounded-full" />
+                <span>Falhou</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <UBadge color="neutral" variant="subtle" class="w-3 h-3 p-0 rounded-full" />
+                <span>Reembolsado</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <UBadge color="warning" variant="subtle" class="w-3 h-3 p-0 rounded-full" />
+                <span>Em Produção</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <UBadge color="secondary" variant="subtle" class="w-3 h-3 p-0 rounded-full" />
+                <span>Cancelado</span>
+              </div>
             </div>
           </div>
-        </Transition>
-      </template>
-      <template #footer>
-        <Transition name="fade-left">
-          <div
-            class="flex items-center justify-between gap-3 border-t border-default p-5"
-          >
+
+          <div class="flex items-center gap-5">
             <div class="text-sm text-muted flex items-center gap-2">
               <p>Por página:</p>
               <USelect
@@ -47,26 +129,23 @@
                 :items="[5, 10, 12, 20, 50]"
               />
             </div>
-
-            <div class="flex items-center gap-3">
-              <UPagination
-                :default-page="
-                  (table?.tableApi?.getState().pagination.pageIndex || 0) + 1
-                "
-                :items-per-page="
-                  table?.tableApi?.getState().pagination.pageSize
-                "
-                :total="table?.tableApi?.getFilteredRowModel().rows.length"
-                @update:page="
-                  (p: number) => table?.tableApi?.setPageIndex(p - 1)
-                "
-              />
-            </div>
+            <UPagination
+              :default-page="
+                (table?.tableApi?.getState().pagination.pageIndex || 0) + 1
+              "
+              :items-per-page="
+                table?.tableApi?.getState().pagination.pageSize
+              "
+              :total="table?.tableApi?.getFilteredRowModel().rows.length"
+              @update:page="
+                (p: number) => table?.tableApi?.setPageIndex(p - 1)
+              "
+            />
           </div>
-        </Transition>
-      </template>
-    </UDashboardPanel>
-  </UMain>
+        </div>
+      </Transition>
+    </template>
+  </UDashboardPanel>
 </template>
 
 <script setup lang="ts">

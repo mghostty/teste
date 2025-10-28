@@ -15,6 +15,7 @@
     "@unovis/ts": "^1.6.1",
     "@unovis/vue": "^1.6.1",
     "date-fns": "^4.1.0",
+    "nprogress": "^0.2.0",
     "swapy": "^1.0.5",
     "vue": "^3.5.22",
     "vue-router": "^4.5.1",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@iconify-json/fa-solid": "^1.2.2",
+    "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "eslint": "^9.37.0",
     "eslint-plugin-vue": "^10.5.0",

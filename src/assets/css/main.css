@@ -87,6 +87,11 @@ body {
   overflow-x: hidden !important;
 }
 
+.max-w-8xl {
+  max-width: 97rem;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -114,7 +119,6 @@ body {
   background: oklch(0.439 0 0 / 0.6);
 }
 
-/* Firefox */
 * {
   scrollbar-width: thin;
   scrollbar-color: oklch(0.708 0 0 / 0.3) transparent;
@@ -128,6 +132,7 @@ body {
   --ui-primary: var(--ui-color-primary-500);
 }
 
+/* Animations */
 .fade-left-enter-active,
 .fade-left-leave-active {
   transition:
